@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid" style="background-color: rgb(245, 236, 110); height:90vh;">
+    <h3 class="text-center">Welcome to File Compressor</h3>
+    <h5 class="text-center">Your one stop to compress and decompress files and folders...</h5>
+    <div class="d-flex justify-content-center" style="height: 50vh;">
+		<div class="container-fluid" style="margin-top: 10vh;margin-left: 50vh;">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2 align-content-center text-center">Compress Files</h5>
+                            <br><br>
+                            <div class="text-center"><a href="{% url 'compress' %}" class="btn btn-primary">Compress Files</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2 align-content-center text-center">Decompress Files</h5>
+                            <br><br>
+                            <div class="text-center"><a href="{% url 'decompress' %}" class="btn btn-primary">Decompress Files</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

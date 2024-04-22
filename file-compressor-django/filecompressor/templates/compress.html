@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block title %}Compress File{% endblock %}
+{% block content %}
+<div class="container-fluid" style="background-color: rgb(245, 236, 110); height:90vh;">
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label class="form-label" for="fileinput">Upload File</label>
+                <input class="form-control" id="fileinput" name="file" type="file" multiple/>
+            </div>
+            <input type="submit" name="upload" class="btn btn-primary" value="Upload"/>
+        </form>
+    </div>
+    <br>
+    <div class="d-flex justify-content-left">
+        {% if filenames %}
+            <p><strong>Files to be compressed:</strong> 
+                {% for f in filenames %}
+                    {{ f }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+    </div>    
+    <div class="d-flex justify-content-center">
+        <form method="POST">
+            {% csrf_token %}
+            {% if filenames %}
+                <input type="submit" class="btn btn-primary" name="compress" value="Compress"/>
+            {% endif %}
+        </form>
+    </div>
+    {% if enabledwnld %}
+    <br>
+    <div class="d-flex justify-content-center">
+        <form method="POST">
+            {% csrf_token %}
+            <input class="btn btn-primary" name="download" type="submit" value="Download ZIP File">
+        </form>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+        <form method="POST">
+            {% csrf_token %}
+            <input class="btn btn-primary" name="downloadlogfile" type="submit" value="Download Log File">
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
